@@ -5,23 +5,17 @@ formAutorization.addEventListener('submit', onAutorization);
 function onAutorization(event) {
   event.preventDefault();
 
-  const {
-    elements: { email, password },
-  } = event.currentTarget;
+  const { email, password } = event.currentTarget.elements;
 
-  const formData = new FormData(event.currentTarget);
+  const formData = {
+    email: email.value,
+    password: password.value,
+  };
 
   if (!email.value || !password.value) {
     alert('Please fill in all the fields!');
   } else {
-    const data = {};
-
-    formData.forEach((value, name) => {
-      data[name] = value;
-    });
-
-    console.log(data);
+    console.log(formData);
   }
-
   event.currentTarget.reset();
 }
