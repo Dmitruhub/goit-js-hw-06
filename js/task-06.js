@@ -6,10 +6,19 @@ input.addEventListener('blur', changeBorder);
 
 function changeBorder() {
   if (input.value.trim().length === Number(symbolsLength)) {
-    input.classList.add('valid');
-    input.classList.remove('invalid');
-  } else {
-    input.classList.add('invalid');
-    input.classList.remove('valid');
+    toggleClassList('valid', 'invalid');
   }
+  if (input.value.trim().length === 0) {
+    removeClassList('invalid', 'valid');
+  } else {
+    toggleClassList('invalid', 'valid');
+  }
+}
+function toggleClassList(add, remove) {
+  input.classList.add(add);
+  input.classList.remove(remove);
+}
+function removeClassList(one, two) {
+  input.classList.remove(one);
+  input.classList.remove(two);
 }
